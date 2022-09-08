@@ -14,9 +14,7 @@ function App() {
     data: dogs,
     error,
     isFetching,
-  } = useFetch<Dogs>(`/api/facts?number=5`);
-
-  // `users/Johann-Goncalves-Pereira/repos`
+  } = useFetch<Dogs>(`users/Johann-Goncalves-Pereira/repos`);
 
   const [search, setSearch] = useState("");
 
@@ -25,7 +23,6 @@ function App() {
 
   return (
     <main className={styles.main}>
-      {isFetching && <p className={styles.loading}>Loading...</p>}
       {error ? (
         <div className={styles.error}>
           <p>Sorry, an error occurred in the api fetching</p>
@@ -39,6 +36,8 @@ function App() {
           value={search}
         ></input>
       )}
+
+      {isFetching && <p className={styles.loading}>Loading...</p>}
 
       {search.length > 0 ? (
         <ul className={styles.list}>
