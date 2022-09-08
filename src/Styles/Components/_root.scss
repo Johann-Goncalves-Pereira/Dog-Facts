@@ -7,4 +7,12 @@ body {
 
 	font-family: "Fredoka", spotify-circular, spotify-circular-cyrillic, spotify-circular-arabic, spotify-circular-hebrew,
 		"Helvetica Neue", helvetica, arial, "Hiragino Kaku Gothic Pro", Meiryo, "MS Gothic", sans-serif;
+
+	> div {
+		display: grid;
+		place-items: center;
+
+		width: 100%;
+		height: 100vh;
+	}
 }
