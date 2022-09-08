@@ -1,44 +1,30 @@
-import { useState } from "react";
-import logo from "./logo.svg";
-import style from "./App.module.scss";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useFetch } from "./hooks/useFetch";
+
+type Dogs = {
+  facts: string;
+  success: boolean;
+};
 
 function App() {
-  const [count, setCount] = useState(0);
+  const {
+    data: dogs,
+    error,
+    isFetching,
+  } = useFetch<Dogs>("api/v1/resources/dogs?number=10");
 
   return (
-    <div className={style.App}>
-      <header className={style.App__header}>
-        <img src={logo} className={style.App__logo} alt="logo" />
-        <p>Vite + React + PostCss + Sass + Open Props!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className={style.App__link}
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {" | "}
-          <a
-            className={style.App__link}
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
+    <main className="bg-surface-3">
+      {isFetching && <p>Loading...</p>}
+      {error && <p>Err</p>}
+
+      <ul>
+        {dogs?.map((fact) => {
+          return <li key={fact.facts}>{fact.facts}</li>;
+        })}
+      </ul>
+    </main>
   );
 }
 
