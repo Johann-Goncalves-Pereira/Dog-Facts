@@ -4,7 +4,7 @@ import { useFetch } from "./hooks/useFetch";
 import styles from "./App.module.scss";
 
 type Dogs = {
-  facts: string;
+  facts: string[];
   success: boolean;
   name: string;
 };
