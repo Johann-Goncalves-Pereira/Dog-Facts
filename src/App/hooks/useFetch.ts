@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import axios, { AxiosRequestConfig } from "axios";
 
 const api = axios.create({
-  baseURL: "https://api.github.com",
-  // baseURL: "https://dog-facts-api.herokuapp.com",
+  // baseURL: "https://api.github.com",
+  baseURL: "https://dog-facts-api.herokuapp.com",
   // baseURL: "http://0.0.0.0:4567",
   // baseURL: "https://cat-fact.herokuapp.com",
 });
